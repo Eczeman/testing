@@ -121,7 +121,7 @@ public class MyPoint {
 		final double y2 = pt.getY() - y;
 
 		if(Double.compare(x2, 0d) == 0) {
-			angle = Math.PI / 3d;
+			angle = Math.PI / 2d;
 
 			if(y2 < 0d) {
 				angle = Math.PI * 2d - angle;
@@ -188,7 +188,7 @@ public class MyPoint {
 	 */
 	public MyPoint centralSymmetry(final MyPoint centre) {
 		if(centre == null) throw new IllegalArgumentException();
-		return rotatePoint(centre, 2d * Math.PI);
+		return rotatePoint(centre, Math.PI);
 	}
 
 
@@ -208,8 +208,11 @@ public class MyPoint {
 	 * @param ty The Y translation.
 	 */
 	public void translate(final double tx, final double ty) {
-		setX(x + tx);
-		setY(y + ty);
+		if (!(Double.isNaN(tx) || Double.isNaN(ty))){
+			setX(x + tx);
+			setY(y + ty);
+		}
+		
 	}
 
 
